@@ -1,13 +1,22 @@
-<div id="aaa">
-    <h3>Content Data</h3>
-    <pre>
-        <code class="json hljs" data-th-text="${content}" style="word-break: break-word;">
+<div id="xpcontentviewerid">
+    <h6 data-th-style="${contentMaster? '' : 'display:none'}">Master</h6>
+    <pre class="master" data-th-style="${contentMaster? '' : 'display:none'}">
+        <code class="json hljs" data-th-text="${contentMaster}" style="word-break: break-word;">
             {"test": 234}
+        </code>
+    </pre>
+
+    <h6 data-th-style="${contentDraft? '' : 'display:none'}">Draft</h6>
+    <pre class="master" data-th-style="${contentDraft? '' : 'display:none'}">
+        <code class="json hljs" data-th-text="${contentDraft}" style="word-break: break-word;">
+            {"test": 123}
         </code>
     </pre>
 </div>
 <link rel="stylesheet" data-th-href="${portal.assetUrl({'_path=css/solarized_light.css'})}"
       href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="../../../site/assets/css/contentviewer.css" data-th-href="${portal.assetUrl({'_path=css/contentviewer.css'})}"
+      type="text/css" media="all"/>
 <script data-th-src="${portal.assetUrl({'_path=js/highlight.js'})}"
         src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
 <script data-th-src="${portal.assetUrl({'_path=js/contentviewer.js'})}"></script>

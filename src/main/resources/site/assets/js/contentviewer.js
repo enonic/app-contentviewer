@@ -21,7 +21,7 @@ function fireReadyEvent() {
         return;
     }
     var event = new CustomEvent("importready" + uid, {
-        detail: cvDocument.getElementById('aaa')
+        detail: cvDocument.getElementById('xpcontentviewerid')
     });
 
     document.dispatchEvent(event);

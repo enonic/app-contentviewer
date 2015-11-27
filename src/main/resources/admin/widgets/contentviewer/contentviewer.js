@@ -23,10 +23,8 @@ function handleGet(req) {
 
     var params = {
         uid: uid,
-        content: JSON.stringify({
-            draft: draft,
-            master: master
-        }, null, 2)
+        contentDraft: draft ? JSON.stringify(draft, null, 2) : null,
+        contentMaster: master ? JSON.stringify(master, null, 2) : null
     };
 
     return {
