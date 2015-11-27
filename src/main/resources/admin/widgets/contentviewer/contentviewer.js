@@ -1,16 +1,32 @@
-var portal = require('/lib/xp/portal');
+var contentLib = require('/lib/xp/content');
+var portalLib = require('/lib/xp/portal');
 var thymeleaf = require('/lib/xp/thymeleaf');
 
 
 function handleGet(req) {
+
+    log.info("req" + JSON.stringify(req, null, 2));
+
     var view = resolve('contentviewer.html');
 
+    var content = portalLib.getContent();
+
     var uid = req.url.split('?uid=')[1];
-    var content = portal.getContent();
+    var draft = contentLib.get({
+        key: content._id,
+        branch: 'draft'
+    });
+    var master = contentLib.get({
+        key: content._id,
+        branch: 'master'
+    });
 
     var params = {
         uid: uid,
-        content: content
+        content: JSON.stringify({
+            draft: draft,
+            master: master
+        }, null, 2)
     };
 
     return {
