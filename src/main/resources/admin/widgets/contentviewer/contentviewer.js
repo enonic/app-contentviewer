@@ -10,7 +10,7 @@ function handleGet(req) {
 
     var params = {
         uid: uid,
-        content: JSON.stringify(content, null, 2)
+        content: content
     };
 
     return {
