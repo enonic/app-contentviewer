@@ -1,7 +1,3 @@
-function getDocument(script) {
-    return script ? script.ownerDocument : document;
-}
-
 function getCurrentScript() {
     var script = window.HTMLImports ? window.HTMLImports.currentScript : undefined;
 
@@ -12,17 +8,20 @@ function getCurrentScript() {
     return script;
 }
 
-var gaScript = getCurrentScript();
-var gaDocument = getDocument(gaScript);
-var uid = gaDocument.baseURI.split('?uid=')[1];
+function getDocument(script) {
+    return script ? script.ownerDocument : document;
+}
+
+var cvScript = getCurrentScript();
+var cvDocument = getDocument(cvScript);
+var uid = cvDocument.baseURI.split('?uid=')[1];
 
 function fireReadyEvent() {
-    //debugger;
     if (!uid) {
         return;
     }
     var event = new CustomEvent("importready" + uid, {
-        detail: gaDocument.getElementById('aaa')
+        detail: cvDocument.getElementById('aaa')
     });
 
     document.dispatchEvent(event);
