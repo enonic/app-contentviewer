@@ -3,16 +3,15 @@ var thymeleaf = require('/lib/xp/thymeleaf');
 
 
 function handleGet(req) {
-    var view = resolve('contentviewer-tmp.html');
+    var view = resolve('contentviewer.html');
 
     var uid = req.url.split('?uid=')[1];
+    var content = portal.getContent();
 
-    log.info("aa");
-    log.info(portal.assetUrl({path: 'js/contentviewer.js'}));
     var params = {
-        contentViewerJsUrl: portal.assetUrl({path: 'js/contentviewer.js'}),
-        uid: uid
-    }
+        uid: uid,
+        content: content
+    };
 
     return {
         contentType: 'text/html',

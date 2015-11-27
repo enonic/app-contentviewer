@@ -1,0 +1,13 @@
+<div id="aaa">
+    <h3>Content Data</h3>
+    <pre>
+        <code class="json hljs" data-th-text="${content}">
+            {"test": 234}
+        </code>
+    </pre>
+</div>
+<link rel="stylesheet" data-th-href="${portal.assetUrl({'_path=css/solarized_light.css'})}"
+      href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css" type="text/css" media="all"/>
+<script data-th-src="${portal.assetUrl({'_path=js/highlight.js'})}"
+        src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+<script data-th-src="${portal.assetUrl({'_path=js/contentviewer.js'})}"></script>
