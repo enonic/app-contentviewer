@@ -2,10 +2,7 @@ var contentLib = require('/lib/xp/content');
 var portalLib = require('/lib/xp/portal');
 var thymeleaf = require('/lib/xp/thymeleaf');
 
-
 function handleGet(req) {
-
-    log.info("req" + JSON.stringify(req, null, 2));
 
     var view = resolve('contentviewer.html');
 

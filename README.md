@@ -1,11 +1,12 @@
 # Content Viewer App for Enonic XP
 
-This app extends the administration console by allowing to view
+This app extends the administration console by displaying
 the properties of the selected content as a JSON object.
 
-Here's the documentation for this application:
+The app does not require any configuration. 
+Once the app is deployed, a new "Content Viewer" option will be available in the dropdown of the Content Manager browse view.
 
-* [Installing the App](docs/installing.md)
+When a content is selected, its JSON representation will be shown on the widget view.
 
 
 ## Releases and Compatibility
