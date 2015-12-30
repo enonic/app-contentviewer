@@ -1,20 +1,31 @@
-<div id="xpcontentviewerid">
-    <h6 data-th-style="${contentMaster? '' : 'display:none'}">Master</h6>
-    <pre class="master" data-th-style="${contentMaster? '' : 'display:none'}">
-        <code class="json hljs" data-th-text="${contentMaster}" style="word-break: break-word;">
-            {"test": 234}
-        </code>
-    </pre>
+<body>
+<div>
+    <link rel="stylesheet" data-th-href="${portal.assetUrl({'_path=highlight/css/'+theme+'.css'})}"
+          href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="../../../site/assets/css/contentviewer.css"
+          data-th-href="${portal.assetUrl({'_path=css/contentviewer.css'})}"
+          type="text/css" media="all"/>
+    <div data-th-id="'xpcontentviewerid_' + ${uid}" class="xpcontentviewer">
+        <div class="master" data-th-style="${showMaster? '' : 'display:none'}">
+            <a href="#" onclick="return branchToggle('master');">&#9776; Master branch</a>
+        <pre data-th-remove="${contentMaster}? none : all">
+            <code class="json hljs" data-th-text="${contentMaster}">
+                {"test": 234}
+            </code>
+        </pre>
+        </div>
 
-    <h6 data-th-style="${contentDraft? '' : 'display:none'}">Draft</h6>
-    <pre class="master" data-th-style="${contentDraft? '' : 'display:none'}">
-        <code class="json hljs" data-th-text="${contentDraft}" style="word-break: break-word;">
-            {"test": 123}
-        </code>
-    </pre>
+        <div class="draft" data-th-style="${showDraft? '' : 'display:none'}">
+            <a href="#" onclick="return branchToggle('draft');">&#9776; Draft branch</a>
+        <pre data-th-remove="${contentDraft}? none : all">
+            <code class="json hljs" data-th-text="${contentDraft}">
+                {"test": 123}
+            </code>
+        </pre>
+        </div>
+    </div>
 </div>
-<link rel="stylesheet" data-th-href="${portal.assetUrl({'_path=css/solarized_light.css'})}"
-      href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css" type="text/css" media="all"/>
-<script data-th-src="${portal.assetUrl({'_path=js/highlight.js'})}"
+</body>
+<script data-th-src="${portal.assetUrl({'_path=highlight/highlight.js'})}"
         src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
 <script data-th-src="${portal.assetUrl({'_path=js/contentviewer.js'})}"></script>

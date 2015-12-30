@@ -12,19 +12,19 @@ function getDocument(script) {
     return script ? script.ownerDocument : document;
 }
 
-var cvScript = getCurrentScript();
-var cvDocument = getDocument(cvScript);
+var dvScript = getCurrentScript();
+var cvDocument = getDocument(dvScript);
 var uid = cvDocument.baseURI.split('?uid=')[1];
 
-function fireReadyEvent() {
-    if (!uid) {
-        return;
-    }
-    var event = new CustomEvent("importready" + uid, {
-        detail: cvDocument.getElementById('xpcontentviewerid')
+function branchToggle(branch) {
+    var divs = getContainer('xpcontentviewerid').getElementsByTagName('div');
+    [].forEach.call(divs, function (el) {
+        el.style.display = el.className !== branch ? 'block' : 'none';
     });
-
-    document.dispatchEvent(event);
+    return false;
 }
 
-fireReadyEvent();
+function getContainer(containerId) {
+    containerId = containerId + '_' + uid;
+    return document.getElementById(containerId) || cvDocument.getElementById(containerId);
+}

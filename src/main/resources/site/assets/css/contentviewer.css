@@ -1,0 +1,18 @@
+div.xpcontentviewer {
+    padding-top: 10px;
+    text-align: center;
+}
+
+div.xpcontentviewer a {
+    font-size: 14px;
+    cursor: pointer;
+    color: #2c76e9;
+    text-decoration: inherit;
+}
+
+div.xpcontentviewer code {
+    text-align: left;
+    word-break: break-word;
+    font-family: Consolas, monaco, monospace;
+}
+
