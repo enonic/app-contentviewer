@@ -12,7 +12,8 @@ div.xpcontentviewer a {
 
 div.xpcontentviewer code {
     text-align: left;
-    word-break: break-word;
+    word-wrap: break-word;
+    white-space: pre-wrap;
     font-family: Consolas, monaco, monospace;
 }
 
