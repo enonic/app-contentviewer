@@ -28,7 +28,7 @@ function handleGet(req) {
         contentDraft: draft ? JSON.stringify(draft, null, 2) : null,
         contentMaster: master ? JSON.stringify(master, null, 2) : null,
         showMaster: activeBranch === 'master',
-        showDraft: activeBranch === 'draft',
+        showDraft: activeBranch === 'draft'
     };
 
     return {

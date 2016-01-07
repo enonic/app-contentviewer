@@ -1,34 +1,33 @@
-(function () {
+function cv_getCurrentScript() {
+    var script = window.HTMLImports ? window.HTMLImports.currentScript : undefined;
 
-    function getCurrentScript() {
-        var script = window.HTMLImports ? window.HTMLImports.currentScript : undefined;
-
-        if (!script && !!document.currentScript) {
-            script = document.currentScript.__importElement || document.currentScript;
-        }
-
-        return script;
+    if (!script && !!document.currentScript) {
+        script = document.currentScript.__importElement || document.currentScript;
     }
 
-    function getDocument(script) {
-        return script ? script.ownerDocument : document;
+    return script;
+}
+
+function cv_getDocument(script) {
+    return script ? script.ownerDocument : document;
+}
+
+var dvScript = cv_getCurrentScript();
+var cvDocument = cv_getDocument(dvScript);
+var uid = cvDocument.baseURI.split('?uid=')[1];
+
+function cv_branchToggle(branch) {
+    var containerId = 'xpcontentviewerid_' + uid,
+        container = document.getElementById(containerId) || cvDocument.getElementById(containerId),
+        otherBranch = (branch == "master" ? "draft" : "master");
+
+    if (container.querySelector("#" + branch).style.display == "none") {
+        container.querySelector("#" + branch).style.display = "block";
+        container.querySelector("#tab_" + branch).classList.toggle("selected");
+
+        container.querySelector("#" + otherBranch).style.display = "none";
+        container.querySelector("#tab_" + otherBranch).classList.toggle("selected");
     }
 
-    var dvScript = getCurrentScript();
-    var cvDocument = getDocument(dvScript);
-    var uid = cvDocument.baseURI.split('?uid=')[1];
-
-    function branchToggle(branch) {
-        var divs = getContainer('xpcontentviewerid').getElementsByTagName('div');
-        [].forEach.call(divs, function (el) {
-            el.style.display = el.className !== branch ? 'block' : 'none';
-        });
-        return false;
-    }
-
-    function getContainer(containerId) {
-        containerId = containerId + '_' + uid;
-        return document.getElementById(containerId) || cvDocument.getElementById(containerId);
-    }
-
-}());
+    return false;
+}

@@ -1,19 +1,28 @@
-div.xpcontentviewer {
-    padding-top: 10px;
-    text-align: center;
-}
-
-div.xpcontentviewer a {
-    font-size: 14px;
-    cursor: pointer;
-    color: #2c76e9;
-    text-decoration: inherit;
-}
-
-div.xpcontentviewer code {
+div.xp-contentviewer code {
     text-align: left;
     word-wrap: break-word;
     white-space: pre-wrap;
     font-family: Consolas, monaco, monospace;
 }
+.xp-contentviewer-tabs {
+    display: table;
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #cccccc;
+}
 
+.xp-contentviewer-tabs a {
+    display: table-cell;
+    padding: 10px 12px;
+    border-bottom: 4px solid transparent;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333333;
+    text-decoration: none;
+}
+
+.xp-contentviewer-tabs a.selected {
+    border-bottom-color: #4294de;
+    color: #4294de;
+}
