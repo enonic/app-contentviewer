@@ -13,6 +13,7 @@ buildscript {
 }
 
 apply plugin: 'com.enonic.xp.app'
+apply plugin: 'maven-publish'
 
 app {
     name = project.appName
@@ -32,5 +33,18 @@ repositories {
     jcenter()
     maven {
         url 'http://repo.enonic.com/public'
+    }
+}
+
+publishing {
+    publications {
+        mavenJava( MavenPublication ) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "http://repo.enonic.net/artifactory/public"
+        }
     }
 }
