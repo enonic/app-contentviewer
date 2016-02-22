@@ -8,8 +8,8 @@
 
     <div data-th-id="'xpcontentviewerid_' + ${uid}" class="xp-contentviewer">
         <div data-th-id="tabs" class="xp-contentviewer-tabs">
-            <a data-th-id="tab_draft" href="#" onclick="return cv_branchToggle('draft');" data-th-class="${showMaster? '' : 'selected'}" data-th-remove="${contentDraft}? none : all">Draft branch</a>
-            <a data-th-id="tab_master" href="#" onclick="return cv_branchToggle('master');" data-th-class="${showMaster? 'selected' : ''}" data-th-remove="${contentMaster}? none : all">Master branch</a>
+            <a data-th-id="tab_draft" href="#" onclick="return ContentViewer.cv_branchToggle('draft');" data-th-class="${showMaster? '' : 'selected'}" data-th-remove="${contentDraft}? none : all">Draft branch</a>
+            <a data-th-id="tab_master" href="#" onclick="return ContentViewer.cv_branchToggle('master');" data-th-class="${showMaster? 'selected' : ''}" data-th-remove="${contentMaster}? none : all">Master branch</a>
         </div>
 
         <div data-th-id="draft" data-th-style="${showDraft? '' : 'display:none'}">
