@@ -4,6 +4,7 @@ div.xp-contentviewer code {
     white-space: pre-wrap;
     font-family: Consolas, monaco, monospace;
 }
+
 .xp-contentviewer-tabs {
     display: table;
     width: 100%;
@@ -25,4 +26,41 @@ div.xp-contentviewer code {
 .xp-contentviewer-tabs a.selected {
     border-bottom-color: #4294de;
     color: #4294de;
+}
+
+div.xp-contentviewer code {
+    padding-top: 0.5em;
+}
+
+div.xp-contentviewer code span.xpconview-string {
+    color: #008000;
+}
+
+div.xp-contentviewer code span.xpconview-number {
+    color: #0000FF;
+}
+
+div.xp-contentviewer code span.xpconview-boolean {
+    color: #000080;
+}
+
+div.xp-contentviewer code span.xpconview-null {
+    color: #20999D;
+}
+
+div.xp-contentviewer code span.xpconview-key {
+    color: #660E7A;
+    font-weight: bolder;
+}
+
+div.xp-contentviewer code span.xpconview-id {
+    color: #808000;
+}
+
+div.xp-contentviewer code span.xpconview-path {
+    color: #D07a22;
+}
+
+div.xp-contentviewer code span.xpconview-datetime {
+    color: #4A86E8;
 }

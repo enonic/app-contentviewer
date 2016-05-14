@@ -1,7 +1,5 @@
 <body>
 <div>
-    <link rel="stylesheet" data-th-href="${portal.assetUrl({'_path=highlight/css/'+theme+'.css'})}"
-          href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="../../../site/assets/css/contentviewer.css"
           data-th-href="${portal.assetUrl({'_path=css/contentviewer.css'})}"
           type="text/css" media="all"/>
@@ -14,22 +12,20 @@
 
         <div data-th-id="draft" data-th-style="${showDraft? '' : 'display:none'}">
         <pre data-th-remove="${contentDraft}? none : all">
-            <code class="json hljs" data-th-text="${contentDraft}">
-                {"test": 123}
-            </code>
+<code data-th-utext="${contentDraft}">
+{"test": 123}
+</code>
         </pre>
         </div>
 
         <div data-th-id="master" data-th-style="${showMaster? '' : 'display:none'}">
         <pre data-th-remove="${contentMaster}? none : all">
-            <code class="json hljs" data-th-text="${contentMaster}">
-                {"test": 234}
-            </code>
+<code data-th-utext="${contentMaster}">
+{"test": 234}
+</code>
         </pre>
         </div>
     </div>
 </div>
 </body>
-<script data-th-src="${portal.assetUrl({'_path=highlight/highlight.js'})}"
-        src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
 <script data-th-src="${portal.assetUrl({'_path=js/contentviewer.js'})}"></script>
