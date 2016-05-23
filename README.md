@@ -1,6 +1,6 @@
 # Content Viewer App for Enonic XP
 
-<img style="float: right;" alt="Content Viewer Logo" src="https://rawgithub.com/enonic/app-content-viewer/master/src/main/resources/assets/img/content_viewer_cleaned.svg" width="128">
+<img align="right" alt="Content Viewer Logo" src="https://rawgithub.com/enonic/app-content-viewer/master/src/main/resources/assets/img/content_viewer_cleaned.svg" width="128">
 
 This app extends the administration console by displaying
 the properties of the selected content as a JSON object.
