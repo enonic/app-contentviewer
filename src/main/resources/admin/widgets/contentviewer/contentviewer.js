@@ -2,6 +2,8 @@ var contentLib = require('/lib/xp/content');
 var portalLib = require('/lib/xp/portal');
 var thymeleaf = require('/lib/xp/thymeleaf');
 
+var view = resolve('contentviewer.html');
+
 function handleGet(req) {
     var uid = req.params.uid;
     var contentId = req.params.contentid;
@@ -23,10 +25,8 @@ function handleGet(req) {
         activeBranch = master.modifiedTime >= draft.modifiedTime ? 'master' : 'draft';
     }
 
-    var view = resolve('contentviewer.html');
     var params = {
         uid: uid,
-        theme: 'atelier-cave-light',
         contentDraft: draft ? highlightJson(draft) : null,
         contentMaster: master ? highlightJson(master) : null,
         showMaster: activeBranch === 'master',
