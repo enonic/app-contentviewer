@@ -3,29 +3,27 @@ var portalLib = require('/lib/xp/portal');
 var thymeleaf = require('/lib/xp/thymeleaf');
 
 function handleGet(req) {
-    var uid = req.url.split('?uid=')[1];
-    var view = resolve('contentviewer.html');
-
-
+    var uid = req.params.uid;
     var contentId = req.params.contentid;
     if (!contentId) {
         contentId = portalLib.getContent()._id;
     }
-
     var draft = contentLib.get({
         key: contentId,
         branch: 'draft'
     });
+
     var master = contentLib.get({
         key: contentId,
         branch: 'master'
     });
-
     var activeBranch = 'draft';
+
     if (master && draft) {
         activeBranch = master.modifiedTime >= draft.modifiedTime ? 'master' : 'draft';
     }
 
+    var view = resolve('contentviewer.html');
     var params = {
         uid: uid,
         theme: 'atelier-cave-light',
