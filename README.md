@@ -13,10 +13,11 @@ When a content is selected, its JSON representation will be shown on the widget 
 
 ## Releases and Compatibility
 
-| App version | Required XP version | Download |
-| ----------- | ------------------- | -------- |
-| 1.0.0 | 6.3.0 | N/A |
-| 1.1.0 | 6.5.3 | N/A |
+| App version | Required XP version |
+| ----------- | ------------------- |
+| 1.0.0 | 6.3.0 |
+| 1.1.0 | 6.5.3 |
+| 1.1.1 | 6.5.3 |
 
 
 ## Building and deploying
