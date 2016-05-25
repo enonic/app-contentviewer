@@ -6,14 +6,18 @@ function handleGet(req) {
     var uid = req.url.split('?uid=')[1];
     var view = resolve('contentviewer.html');
 
-    var content = portalLib.getContent();
+
+    var contentId = req.params.contentid;
+    if (!contentId) {
+        contentId = portalLib.getContent()._id;
+    }
 
     var draft = contentLib.get({
-        key: content._id,
+        key: contentId,
         branch: 'draft'
     });
     var master = contentLib.get({
-        key: content._id,
+        key: contentId,
         branch: 'master'
     });
 
