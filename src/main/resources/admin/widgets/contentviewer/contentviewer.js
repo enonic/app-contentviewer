@@ -59,8 +59,30 @@ function highlightJson(json) {
             } else if (/null/.test(match)) {
                 cls = 'null';
             }
-            return '<span class="xpconview-' + cls + '">' + match + '</span>';
+            return '<span class="xpconview-' + cls + '"' + getContentTitle(match) + '>' + match + '</span>';
         });
+}
+
+// Add title attribute for content IDs with displayName and path
+function getContentTitle(value) {
+    if (value.length < 3) {
+        return null;
+    }
+    var v = value.substring(1, value.length - 1);
+    if (/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v)) {
+
+        var content = contentLib.get({key: v});
+        if(content) {
+            return ' title="' + sanitize(content.displayName) + ' - ' + content._path + '"';
+        }
+
+    }
+    return null;
+}
+
+// Prevent " and < and > from breaking the title attribute
+function sanitize(value) {
+    return value.replace(/"|<|>/g, '');
 }
 
 function extraType(value) {
