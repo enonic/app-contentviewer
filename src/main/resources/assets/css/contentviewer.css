@@ -54,6 +54,7 @@ div.xp-contentviewer code span.xpconview-key {
 
 div.xp-contentviewer code span.xpconview-id {
     color: #808000;
+    cursor: help;
 }
 
 div.xp-contentviewer code span.xpconview-path {
@@ -62,4 +63,23 @@ div.xp-contentviewer code span.xpconview-path {
 
 div.xp-contentviewer code span.xpconview-datetime {
     color: #4A86E8;
+}
+
+div.xp-contentviewer div {
+    position: relative;
+}
+
+.xp-contentviewer-copy {
+    width: 24px;
+    height: 24px;
+
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    opacity: 0.2;
+}
+
+.xp-contentviewer-copy:hover {
+    opacity: 1;
+    cursor: pointer;
 }

@@ -2,6 +2,20 @@
 
     var cvDocument = cv_getDocument();
     var uid = cvDocument.baseURI.split('?uid=')[1];
+    if (uid.indexOf('&') > -1) {
+        uid = uid.split('&')[0];
+    }
+
+    new Clipboard('.xp-contentviewer-copy.draft', {
+        text: function () {
+            return getContainer('xpcontentviewerid').querySelector("#draft").textContent.trim();
+        }
+    });
+    new Clipboard('.xp-contentviewer-copy.master', {
+        text: function () {
+            return getContainer('xpcontentviewerid').querySelector("#master").textContent.trim();
+        }
+    });
 
     global.ContentViewer = {
 
