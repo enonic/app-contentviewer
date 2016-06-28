@@ -14,7 +14,7 @@
             setTimeout(function () {
                 tooltip.style.display = 'none';
             }, 1500);
-            return container.querySelector("#draft").textContent.trim();
+            return container.querySelector(".xpcontentviewer-content.draft").textContent.trim();
         }
     });
     new Clipboard('.xp-contentviewer-copy.master', {
@@ -25,7 +25,7 @@
             setTimeout(function () {
                 tooltip.style.display = 'none';
             }, 1500);
-            return getContainer('xpcontentviewerid').querySelector("#master").textContent.trim();
+            return container.querySelector(".xpcontentviewer-content.master").textContent.trim();
         }
     });
 
