@@ -8,11 +8,23 @@
 
     new Clipboard('.xp-contentviewer-copy.draft', {
         text: function () {
-            return getContainer('xpcontentviewerid').querySelector("#draft").textContent.trim();
+            var container = getContainer('xpcontentviewerid');
+            var tooltip = container.querySelector(".xpcontentviewer-tooltip.draft");
+            tooltip.style.display = 'block';
+            setTimeout(function () {
+                tooltip.style.display = 'none';
+            }, 1500);
+            return container.querySelector("#draft").textContent.trim();
         }
     });
     new Clipboard('.xp-contentviewer-copy.master', {
         text: function () {
+            var container = getContainer('xpcontentviewerid');
+            var tooltip = container.querySelector(".xpcontentviewer-tooltip.master");
+            tooltip.style.display = 'block';
+            setTimeout(function () {
+                tooltip.style.display = 'none';
+            }, 1500);
             return getContainer('xpcontentviewerid').querySelector("#master").textContent.trim();
         }
     });

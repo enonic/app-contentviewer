@@ -47,7 +47,7 @@ function highlightJson(json) {
     json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
         function (match) {
-            var cls = 'number';
+            var cls = 'number', title;
             if (/^"/.test(match)) {
                 if (/:$/.test(match)) {
                     cls = 'key';
@@ -59,30 +59,25 @@ function highlightJson(json) {
             } else if (/null/.test(match)) {
                 cls = 'null';
             }
-            return '<span class="xpconview-' + cls + '"' + getContentTitle(match) + '>' + match + '</span>';
+
+            if (cls === 'id') {
+                var id = match.substring(1, match.length - 1);
+                title = getContentTitle(id);
+            }
+            return '<span class="xpconview-' + cls + '"' + (title ? ' title="' + title + '"' : '') + '>' + match + '</span>';
         });
 }
 
-// Add title attribute for content IDs with displayName and path
-function getContentTitle(value) {
-    if (value.length < 3) {
-        return null;
-    }
-    var v = value.substring(1, value.length - 1);
-    if (/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v)) {
-
-        var content = contentLib.get({key: v});
-        if(content) {
-            return ' title="' + sanitize(content.displayName) + ' - ' + content._path + '"';
-        }
-
+function getContentTitle(id) {
+    var content = contentLib.get({key: id});
+    if (content) {
+        return sanitize(content.displayName) + ' - ' + content._path;
     }
     return null;
 }
 
-// Prevent " and < and > from breaking the title attribute
 function sanitize(value) {
-    return value.replace(/"|<|>/g, '');
+    return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 function extraType(value) {

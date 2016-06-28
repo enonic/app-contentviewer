@@ -12,6 +12,7 @@
 
         <div data-th-id="draft" data-th-style="${showDraft? '' : 'display:none'}">
         <img alt="Copy JSON to clipboard" title="Copy JSON to clipboard" class="xp-contentviewer-copy draft" data-th-src="${portal.assetUrl({'_path=img/clippy.svg'})}"/>
+        <span class="xpcontentviewer-tooltip draft">JSON copied to clipboard</span>
         <pre data-th-remove="${contentDraft}? none : all">
 <code data-th-utext="${contentDraft}">
 {"test": 123}
@@ -21,6 +22,7 @@
 
         <div data-th-id="master" data-th-style="${showMaster? '' : 'display:none'}">
         <img alt="Copy JSON to clipboard" title="Copy JSON to clipboard" class="xp-contentviewer-copy master" data-th-src="${portal.assetUrl({'_path=img/clippy.svg'})}"/>
+        <span class="xpcontentviewer-tooltip master">JSON copied to clipboard</span>
         <pre data-th-remove="${contentMaster}? none : all">
 <code data-th-utext="${contentMaster}">
 {"test": 234}

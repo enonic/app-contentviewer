@@ -83,3 +83,20 @@ div.xp-contentviewer div {
     opacity: 1;
     cursor: pointer;
 }
+
+.xpcontentviewer-tooltip {
+    display: none;
+    position: absolute;
+    width: 160px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+    left: calc(50% - 80px);
+    top: 50px;
+    right: calc(50% - 80px);
+    color: #ffffff;
+    background-color: #4294de;
+    border-radius: 5px;
+    opacity: 0.9;
+    z-index: 1000;
+}
