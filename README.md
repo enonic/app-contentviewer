@@ -20,6 +20,7 @@ When a content is selected, its JSON representation will be shown on the widget 
 | 1.1.1 | 6.5.3 |
 | 1.1.2 | 6.5.3 |
 | 1.1.3 | 6.5.3 |
+| 1.1.4 | 6.5.3 |
 
 
 ## Building and deploying
