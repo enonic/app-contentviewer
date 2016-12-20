@@ -6,7 +6,7 @@ To release a new version of this app, please follow the steps below:
 
 2. Compile and deploy to our Maven repository:
 
-    ./gradlew clean build uploadArchives
+    ./gradlew clean build publish
 
 3. Update `README.md` file with new version information and compatibility.
 
