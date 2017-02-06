@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="../../../assets/css/contentviewer.css"
           data-th-href="${portal.assetUrl({'_path=css/contentviewer.css'})}"
           type="text/css" media="all"/>
+    <style data-th-if="${css}" data-th-text="${css}"></style>
 
     <div data-th-id="'xpcontentviewerid_' + ${uid}" class="xp-contentviewer">
         <div data-th-id="tabs" class="xp-contentviewer-tabs">

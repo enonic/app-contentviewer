@@ -1,8 +1,11 @@
 var contentLib = require('/lib/xp/content');
 var portalLib = require('/lib/xp/portal');
 var thymeleaf = require('/lib/xp/thymeleaf');
+var ioLib = require('/lib/xp/io');
 
 var view = resolve('contentviewer.html');
+var cssFile = ioLib.getResource(('/assets/css/contentviewer.css'));
+var css = ioLib.readText(cssFile.getStream());
 
 function handleGet(req) {
     var uid = req.params.uid;
@@ -27,6 +30,7 @@ function handleGet(req) {
 
     var params = {
         uid: uid,
+        css: isEdge(req) ? css : null,
         contentDraft: draft ? highlightJson(draft) : null,
         contentMaster: master ? highlightJson(master) : null,
         showMaster: activeBranch === 'master',
@@ -102,4 +106,9 @@ function extraType(value) {
     }
 
     return null;
+}
+
+function isEdge(req) {
+    var ua = req.headers['User-Agent'] || '';
+    return ua.indexOf('Edge') >= 0;
 }
