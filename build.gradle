@@ -17,7 +17,7 @@ apply plugin: 'maven-publish'
 
 app {
     name = project.appName
-    displayName = project.displayName
+    displayName = 'Content Viewer App'
     vendorName = 'Enonic AS'
     vendorUrl = 'http://enonic.com'
 }
