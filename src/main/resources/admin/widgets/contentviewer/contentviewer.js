@@ -1,6 +1,6 @@
 var contentLib = require('/lib/xp/content');
 var portalLib = require('/lib/xp/portal');
-var thymeleaf = require('/lib/xp/thymeleaf');
+var thymeleaf = require('/lib/thymeleaf');
 var ioLib = require('/lib/xp/io');
 
 var view = resolve('contentviewer.html');
@@ -8,11 +8,18 @@ var cssFile = ioLib.getResource(('/assets/css/contentviewer.css'));
 var css = ioLib.readText(cssFile.getStream());
 
 function handleGet(req) {
-    var uid = req.params.uid;
     var contentId = req.params.contentId;
-    if (!contentId) {
+    if (!contentId && portalLib.getContent()) {
         contentId = portalLib.getContent()._id;
     }
+    if (!contentId) {
+
+        return {
+            contentType: 'text/html',
+            body: '<widget>Please select content to view</widget>'
+        };
+    }
+
     var draft = contentLib.get({
         key: contentId,
         branch: 'draft'
@@ -29,7 +36,6 @@ function handleGet(req) {
     }
 
     var params = {
-        uid: uid,
         css: isEdge(req) ? css : null,
         contentDraft: draft ? highlightJson(draft) : null,
         contentMaster: master ? highlightJson(master) : null,

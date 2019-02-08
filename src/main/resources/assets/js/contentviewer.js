@@ -1,10 +1,6 @@
 (function (global) {
 
     var cvDocument = cv_getDocument();
-    var uid = cvDocument.baseURI.split('?uid=')[1];
-    if (uid.indexOf('&') > -1) {
-        uid = uid.split('&')[0];
-    }
 
     new Clipboard('.xp-contentviewer-copy.draft', {
         text: function () {
@@ -58,7 +54,6 @@
     }
 
     function getContainer(containerId) {
-        containerId = containerId + "_" + uid;
         return document.getElementById(containerId) || cvDocument.getElementById(containerId);
     }
 
