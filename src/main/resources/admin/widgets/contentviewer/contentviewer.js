@@ -16,7 +16,7 @@ function handleGet(req) {
 
         return {
             contentType: 'text/html',
-            body: '<widget>Please select content to view</widget>'
+            body: '<widget class="error">No content selected</widget>'
         };
     }
 
@@ -29,6 +29,7 @@ function handleGet(req) {
         key: contentId,
         branch: 'master'
     });
+
     var activeBranch = 'draft';
 
     if (master && draft) {
@@ -40,7 +41,8 @@ function handleGet(req) {
         contentDraft: draft ? highlightJson(draft) : null,
         contentMaster: master ? highlightJson(master) : null,
         showMaster: activeBranch === 'master',
-        showDraft: activeBranch === 'draft'
+        showDraft: activeBranch === 'draft',
+        widgetId: app.name
     };
 
     return {

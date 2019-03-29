@@ -1,5 +1,4 @@
-<widget>
-<div>
+<widget data-th-id="${'widget-' + widgetId}">
     <link rel="stylesheet" href="../../../assets/css/contentviewer.css"
           data-th-href="${portal.assetUrl({'_path=css/contentviewer.css'})}"
           type="text/css" media="all"/>
@@ -7,8 +6,8 @@
 
     <div data-th-id="xpcontentviewerid" class="xp-contentviewer">
         <div data-th-id="tabs" class="xp-contentviewer-tabs">
-            <a data-th-id="tab_draft" href="#" onclick="return ContentViewer.cv_branchToggle('draft');" data-th-class="${showMaster? '' : 'selected'}" data-th-remove="${contentDraft}? none : all">Draft branch</a>
-            <a data-th-id="tab_master" href="#" onclick="return ContentViewer.cv_branchToggle('master');" data-th-class="${showMaster? 'selected' : ''}" data-th-remove="${contentMaster}? none : all">Master branch</a>
+            <a data-th-id="tab_draft" href="#" data-th-class="${showMaster? '' : 'selected'}" data-th-remove="${contentDraft}? none : all">Draft branch</a>
+            <a data-th-id="tab_master" href="#" data-th-class="${showMaster? 'selected' : ''}" data-th-remove="${contentMaster}? none : all">Master branch</a>
         </div>
 
         <div data-th-id="draft" data-th-style="${showDraft? '' : 'display:none'}">
@@ -31,7 +30,14 @@
         </pre>
         </div>
     </div>
-</div>
 </widget>
-<script data-th-src="${portal.assetUrl({'_path=js/clipboard.min.js'})}"></script>
-<script data-th-src="${portal.assetUrl({'_path=js/contentviewer.js'})}"></script>
+<script data-th-inline="javascript" type="application/javascript">
+    /*<![CDATA[*/
+    var CONFIG = {
+        widgetId: [[${widgetId}]]
+    };
+
+    /*]]>*/
+</script>
+<script type="application/javascript" data-th-src="${portal.assetUrl({'_path=js/clipboard.min.js'})}"></script>
+<script type="application/javascript" data-th-src="${portal.assetUrl({'_path=js/contentviewer.js'})}"></script>
