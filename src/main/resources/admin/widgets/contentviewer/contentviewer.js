@@ -1,3 +1,4 @@
+var contextLib = require('/lib/xp/context');
 var contentLib = require('/lib/xp/content');
 var portalLib = require('/lib/xp/portal');
 var thymeleaf = require('/lib/thymeleaf');
@@ -20,26 +21,19 @@ function handleGet(req) {
         };
     }
 
-    var draft = contentLib.get({
-        key: contentId,
-        branch: 'draft'
-    });
-
-    var master = contentLib.get({
-        key: contentId,
-        branch: 'master'
-    });
+    var draftContent = fetchContentFromBranch(contentId, 'draft');
+    var masterContent = fetchContentFromBranch(contentId, 'master');
 
     var activeBranch = 'draft';
 
-    if (master && draft) {
-        activeBranch = master.modifiedTime >= draft.modifiedTime ? 'master' : 'draft';
+    if (masterContent && draftContent) {
+        activeBranch = masterContent.modifiedTime >= draftContent.modifiedTime ? 'master' : 'draft';
     }
 
     var params = {
         css: isEdge(req) ? css : null,
-        contentDraft: draft ? highlightJson(draft) : null,
-        contentMaster: master ? highlightJson(master) : null,
+        contentDraft: draftContent ? highlightJson(draftContent) : null,
+        contentMaster: masterContent ? highlightJson(masterContent) : null,
         showMaster: activeBranch === 'master',
         showDraft: activeBranch === 'draft',
         widgetId: app.name
@@ -51,6 +45,17 @@ function handleGet(req) {
     };
 }
 exports.get = handleGet;
+
+function fetchContentFromBranch(contentId, branch) {
+    return contextLib.run({
+        branch: branch
+    }, function() {
+        return contentLib.get({
+            key: contentId
+        })
+    });
+
+}
 
 function highlightJson(json) {
     if (typeof json != 'string') {
