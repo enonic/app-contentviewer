@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget>
   <display-name>Content Viewer</display-name>
+  <description>Inspect your content object JSON</description>
   <interfaces>
-    <interface>com.enonic.xp.content-manager.context-widget</interface>
+    <interface>contentstudio.contextpanel</interface>
   </interfaces>
 </widget>

@@ -1,40 +1,27 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        jcenter()
-        maven {
-            url 'http://repo.enonic.com/public'
-        }
-    }
-
-    dependencies {
-        classpath "com.enonic.xp:gradle-plugin:${xpVersion}"
-        classpath 'com.enonic.gradle:gradle-defaults:1.0.1'
-    }
+plugins {
+    id 'maven-publish'
+    id 'com.enonic.defaults' version '2.0.0'
+    id 'com.enonic.xp.app' version '2.0.0'
 }
-
-apply plugin: 'com.enonic.xp.app'
-apply plugin: 'com.enonic.defaults'
-apply plugin: 'maven'
 
 app {
     name = project.appName
     displayName = 'Content Viewer App'
     vendorName = 'Enonic AS'
-    vendorUrl = 'http://enonic.com'
+    vendorUrl = 'https://enonic.com'
+    systemVersion = "${xpVersion}"
 }
 
 dependencies {
+    include "com.enonic.xp:lib-context:${xpVersion}"
     include "com.enonic.xp:lib-content:${xpVersion}"
     include "com.enonic.xp:lib-portal:${xpVersion}"
-    include "com.enonic.xp:lib-thymeleaf:${xpVersion}"
     include "com.enonic.xp:lib-io:${xpVersion}"
+    include "com.enonic.lib:lib-thymeleaf:2.0.0-RC1"
 }
 
 repositories {
     mavenLocal()
     jcenter()
-    maven {
-        url 'http://repo.enonic.com/public'
-    }
+    xp.enonicRepo()
 }
