@@ -16,15 +16,11 @@ When a content is selected, its JSON representation will be shown on the widget 
 | App version | Required XP version |
 | ----------- | ------------------- |
 | 1.0.0 | 6.3.0 |
-| 1.1.0 | 6.5.3 |
-| 1.1.1 | 6.5.3 |
-| 1.1.2 | 6.5.3 |
-| 1.1.3 | 6.5.3 |
-| 1.1.4 | 6.5.3 |
+| 1.1.0-4 | 6.5.3 |
 | 1.2.0 | 6.8.0 |
 | 1.3.0 | 6.9.0 |
 | 1.4.0 | 6.10.0 |
-| 1.5.0 | 7.0.0 |
+| 1.5.0-2 | 7.0.0 |
 
 
 ## Building and deploying
