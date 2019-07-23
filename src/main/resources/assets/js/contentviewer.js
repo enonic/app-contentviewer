@@ -2,8 +2,15 @@ window['HTMLImports'].whenReady(function() {
 
     const widgetContainer = document.getElementById('widget-' + CONFIG.widgetId);
 
-    widgetContainer.querySelector('#tab_draft').addEventListener('click', () => cv_branchToggle('draft'));
-    widgetContainer.querySelector('#tab_master').addEventListener('click', () => cv_branchToggle('master'));
+    const tabDraft = widgetContainer.querySelector('#tab_draft');
+    const tabMaster = widgetContainer.querySelector('#tab_master');
+
+    if (tabDraft) {
+        tabDraft.addEventListener('click', () => cv_branchToggle('draft'));
+    }
+    if (tabMaster) {
+        tabMaster.addEventListener('click', () => cv_branchToggle('master'));
+    }
 
     new Clipboard('.xp-contentviewer-copy.draft', {
         text: function () {
@@ -29,14 +36,19 @@ window['HTMLImports'].whenReady(function() {
     });
 
     const cv_branchToggle = function (branch) {
-        const otherBranch = (branch == "master" ? "draft" : "master");
+        const panel = widgetContainer.querySelector(`#${branch}`);
 
-        if (widgetContainer.querySelector("#" + branch).style.display == "none") {
-            widgetContainer.querySelector("#" + branch).style.display = "block";
-            widgetContainer.querySelector("#tab_" + branch).classList.toggle("selected");
+        if (panel.style.display == "none") {
+            const otherBranch = (branch == "master" ? "draft" : "master");
+            const tab = widgetContainer.querySelector(`#tab_${branch}`);
+            const otherTab = widgetContainer.querySelector(`#tab_${otherBranch}`);
+            const otherPanel = widgetContainer.querySelector(`#${otherBranch}`);
 
-            widgetContainer.querySelector("#" + otherBranch).style.display = "none";
-            widgetContainer.querySelector("#tab_" + otherBranch).classList.toggle("selected");
+            panel.style.display = "block";
+            tab.classList.toggle("selected");
+
+            otherPanel.style.display = "none";
+            otherTab.classList.toggle("selected");
         }
 
         return false;
