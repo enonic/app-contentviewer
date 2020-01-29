@@ -1,6 +1,6 @@
 window['HTMLImports'].whenReady(function() {
-
-    const widgetContainer = document.getElementById('widget-' + CONFIG.widgetId);
+    const widgetId = document.currentScript.getAttribute('widget-id');
+    const widgetContainer = document.getElementById('widget-' + widgetId);
 
     const tabDraft = widgetContainer.querySelector('#tab_draft');
     const tabMaster = widgetContainer.querySelector('#tab_master');

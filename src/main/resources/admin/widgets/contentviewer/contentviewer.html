@@ -31,13 +31,6 @@
         </div>
     </div>
 </widget>
-<script data-th-inline="javascript" type="application/javascript">
-    /*<![CDATA[*/
-    var CONFIG = {
-        widgetId: [[${widgetId}]]
-    };
 
-    /*]]>*/
-</script>
 <script type="application/javascript" data-th-src="${portal.assetUrl({'_path=js/clipboard.min.js'})}"></script>
-<script type="application/javascript" data-th-src="${portal.assetUrl({'_path=js/contentviewer.js'})}"></script>
+<script type="application/javascript" data-th-src="${portal.assetUrl({'_path=js/contentviewer.js'})}" data-th-widget-id="${widgetId}"></script>
