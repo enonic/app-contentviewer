@@ -1,12 +1,14 @@
+import ClipboardJS from './clipboard.min.js';
+
 (() => {
-    const widgetId = document.currentScript.getAttribute('widget-id');
+    const widgetId = document.currentScript ? document.currentScript.getAttribute('widget-id') : 'com.enonic.app.contentviewer';
     const widgetContainer = document.getElementById('widget-' + widgetId);
 
     const tabDraft = widgetContainer.querySelector('#tab_draft');
     const tabMaster = widgetContainer.querySelector('#tab_master');
 
     const initClipboard = (branch) => {
-        new Clipboard(`.xp-contentviewer-copy.${branch}`, {
+        new ClipboardJS(`.xp-contentviewer-copy.${branch}`, {
             text: function () {
                 const tooltip = widgetContainer.querySelector(`.xpcontentviewer-tooltip.${branch}`);
                 tooltip.style.display = 'block';

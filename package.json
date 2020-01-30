@@ -1,0 +1,36 @@
+{
+  "name": "app-contentviewer",
+  "version": "1.0.0",
+  "description": "View content in JSON format",
+  "main": "webpack.config.babel.js",
+  "devDependencies": {
+    "@babel/core": "^7.8.0",
+    "@babel/preset-env": "^7.8.2",
+    "@babel/register": "^7.8.0",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {},
+  "scripts": {
+    "build": "gradle build",
+    "deploy": "gradle deploy",
+    "watch": "gradle deploy -t",
+    "webpack": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enonic/app-contentviewer.git"
+  },
+  "keywords": [
+    "enonic",
+    "xp",
+    "content"
+  ],
+  "author": "Alex Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enonic/app-contentviewer/issues"
+  },
+  "homepage": "https://github.com/enonic/app-contentviewer#readme"
+}
