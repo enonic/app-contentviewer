@@ -1,39 +1,31 @@
-window['HTMLImports'].whenReady(function() {
+(() => {
     const widgetId = document.currentScript.getAttribute('widget-id');
     const widgetContainer = document.getElementById('widget-' + widgetId);
 
     const tabDraft = widgetContainer.querySelector('#tab_draft');
     const tabMaster = widgetContainer.querySelector('#tab_master');
 
+    const initClipboard = (branch) => {
+        new Clipboard(`.xp-contentviewer-copy.${branch}`, {
+            text: function () {
+                const tooltip = widgetContainer.querySelector(`.xpcontentviewer-tooltip.${branch}`);
+                tooltip.style.display = 'block';
+                setTimeout(function () {
+                    tooltip.style.display = 'none';
+                }, 1500);
+                return widgetContainer.querySelector(`.xpcontentviewer-content.${branch}`).textContent.trim();
+            }
+        });
+    };
+
     if (tabDraft) {
         tabDraft.addEventListener('click', () => cv_branchToggle('draft'));
+        initClipboard('draft');
     }
     if (tabMaster) {
         tabMaster.addEventListener('click', () => cv_branchToggle('master'));
+        initClipboard('master');
     }
-
-    new Clipboard('.xp-contentviewer-copy.draft', {
-        text: function () {
-            //var container = getContainer('xpcontentviewerid');
-            const tooltip = widgetContainer.querySelector(".xpcontentviewer-tooltip.draft");
-            tooltip.style.display = 'block';
-            setTimeout(function () {
-                tooltip.style.display = 'none';
-            }, 1500);
-            return widgetContainer.querySelector(".xpcontentviewer-content.draft").textContent.trim();
-        }
-    });
-    new Clipboard('.xp-contentviewer-copy.master', {
-        text: function () {
-            //var container = getContainer('xpcontentviewerid');
-            const tooltip = widgetContainer.querySelector(".xpcontentviewer-tooltip.master");
-            tooltip.style.display = 'block';
-            setTimeout(function () {
-                tooltip.style.display = 'none';
-            }, 1500);
-            return widgetContainer.querySelector(".xpcontentviewer-content.master").textContent.trim();
-        }
-    });
 
     const cv_branchToggle = function (branch) {
         const panel = widgetContainer.querySelector(`#${branch}`);
@@ -53,5 +45,4 @@ window['HTMLImports'].whenReady(function() {
 
         return false;
     }
-
-});
+})();
