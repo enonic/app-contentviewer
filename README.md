@@ -20,7 +20,7 @@ When a content is selected, its JSON representation will be shown on the widget 
 | 1.2.0 | 6.8.0 |
 | 1.3.0 | 6.9.0 |
 | 1.4.0 | 6.10.0 |
-| 1.5.0-2 | 7.0.0 |
+| 1.5.0 | 7.0.0 |
 
 
 ## Building and deploying
