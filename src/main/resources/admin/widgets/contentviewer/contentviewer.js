@@ -79,7 +79,12 @@ function highlightJson(json) {
 
             if (cls === 'id') {
                 var id = match.substring(1, match.length - 1);
-                title = getContentTitle(id);
+                try {
+                    title = getContentTitle(id);
+                }
+                catch(e) {
+                    title = 'Content not found';
+                }
             }
             return '<span class="xpconview-' + cls + '"' + (title ? ' title="' + title + '"' : '') + '>' + match + '</span>';
         });
@@ -88,8 +93,9 @@ function highlightJson(json) {
 function getContentTitle(id) {
     var content = contentLib.get({key: id});
     if (content) {
-        return sanitize(content.displayName) + ' - ' + content._path;
+        return sanitize(content.displayName);
     }
+
     return null;
 }
 
