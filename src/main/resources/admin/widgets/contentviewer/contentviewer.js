@@ -1,37 +1,33 @@
-var contextLib = require('/lib/xp/context');
-var contentLib = require('/lib/xp/content');
-var portalLib = require('/lib/xp/portal');
-var thymeleaf = require('/lib/thymeleaf');
-var ioLib = require('/lib/xp/io');
+const contextLib = require('/lib/xp/context');
+const contentLib = require('/lib/xp/content');
+const portalLib = require('/lib/xp/portal');
+const thymeleaf = require('/lib/thymeleaf');
 
-var view = resolve('contentviewer.html');
-var cssFile = ioLib.getResource(('/assets/css/contentviewer.css'));
-var css = ioLib.readText(cssFile.getStream());
+const view = resolve('contentviewer.html');
 
 function handleGet(req) {
-    var contentId = req.params.contentId;
+    let contentId = req.params.contentId;
     if (!contentId && portalLib.getContent()) {
         contentId = portalLib.getContent()._id;
     }
-    if (!contentId) {
 
+    if (!contentId) {
         return {
             contentType: 'text/html',
             body: '<widget class="error">No content selected</widget>'
         };
     }
 
-    var draftContent = fetchContentFromBranch(contentId, 'draft');
-    var masterContent = fetchContentFromBranch(contentId, 'master');
+    const draftContent = fetchContentFromBranch(contentId, 'draft');
+    const masterContent = fetchContentFromBranch(contentId, 'master');
 
-    var activeBranch = 'draft';
+    let activeBranch = 'draft';
 
     if (masterContent && draftContent) {
         activeBranch = masterContent.modifiedTime >= draftContent.modifiedTime ? 'master' : 'draft';
     }
 
-    var params = {
-        css: isEdge(req) ? css : null,
+    const params = {
         contentDraft: draftContent ? highlightJson(draftContent) : null,
         contentMaster: masterContent ? highlightJson(masterContent) : null,
         showMaster: activeBranch === 'master',
@@ -64,7 +60,7 @@ function highlightJson(json) {
     json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
         function (match) {
-            var cls = 'number', title;
+            let cls = 'number', title;
             if (/^"/.test(match)) {
                 if (/:$/.test(match)) {
                     cls = 'key';
@@ -78,7 +74,7 @@ function highlightJson(json) {
             }
 
             if (cls === 'id') {
-                var id = match.substring(1, match.length - 1);
+                const id = match.substring(1, match.length - 1);
                 try {
                     title = getContentTitle(id);
                 }
@@ -91,7 +87,7 @@ function highlightJson(json) {
 }
 
 function getContentTitle(id) {
-    var content = contentLib.get({key: id});
+    const content = contentLib.get({key: id});
     if (content) {
         return sanitize(content.displayName);
     }
@@ -107,7 +103,7 @@ function extraType(value) {
     if (value.length < 3) {
         return null;
     }
-    var v = value.substring(1, value.length - 1);
+    const v = value.substring(1, value.length - 1);
     if (/^([^\/]:)?(\/[^\/]+)+$/g.test(v)) {
         return 'path';
     }
@@ -125,9 +121,4 @@ function extraType(value) {
     }
 
     return null;
-}
-
-function isEdge(req) {
-    var ua = req.headers['User-Agent'] || '';
-    return ua.indexOf('Edge') >= 0;
 }
