@@ -2,7 +2,8 @@
     <link rel="stylesheet" href="../../../assets/css/contentviewer.css"
           data-th-href="${portal.assetUrl({'_path=css/contentviewer.css'})}"
           type="text/css" media="all"/>
-    <style data-th-if="${css}" data-th-text="${css}"></style>
+
+    <script type="application/javascript" data-th-src="${portal.assetUrl({'_path=js/bundle.js'})}" data-th-widget-id="${widgetId}"></script>
 
     <div data-th-id="xpcontentviewerid" class="xp-contentviewer">
         <div data-th-id="tabs" class="xp-contentviewer-tabs">
@@ -11,25 +12,19 @@
         </div>
 
         <div data-th-id="draft" data-th-style="${showDraft? '' : 'display:none'}">
-        <img alt="Copy JSON to clipboard" class="xp-contentviewer-copy draft" data-th-src="${portal.assetUrl({'_path=img/clippy.svg'})}"/>
-        <span class="xpcontentviewer-tooltip draft">JSON copied to clipboard</span>
-        <pre class="xpcontentviewer-content draft" data-th-remove="${contentDraft}? none : all">
-<code data-th-utext="${contentDraft}">
-{"test": 123}
-</code>
-        </pre>
+            <img alt="Copy JSON to clipboard" class="xp-contentviewer-copy draft" data-th-src="${portal.assetUrl({'_path=img/clippy.svg'})}"/>
+            <span class="xpcontentviewer-tooltip draft">JSON copied to clipboard</span>
+            <pre class="xpcontentviewer-content draft" data-th-remove="${contentDraft}? none : all">
+            <code data-th-utext="${contentDraft}">{"test": 123}</code>
+            </pre>
         </div>
 
         <div data-th-id="master" data-th-style="${showMaster? '' : 'display:none'}">
-        <img alt="Copy JSON to clipboard" class="xp-contentviewer-copy master" data-th-src="${portal.assetUrl({'_path=img/clippy.svg'})}"/>
-        <span class="xpcontentviewer-tooltip master">JSON copied to clipboard</span>
-        <pre class="xpcontentviewer-content master" data-th-remove="${contentMaster}? none : all">
-<code data-th-utext="${contentMaster}">
-{"test": 234}
-</code>
-        </pre>
+            <img alt="Copy JSON to clipboard" class="xp-contentviewer-copy master" data-th-src="${portal.assetUrl({'_path=img/clippy.svg'})}"/>
+            <span class="xpcontentviewer-tooltip master">JSON copied to clipboard</span>
+            <pre class="xpcontentviewer-content master" data-th-remove="${contentMaster}? none : all">
+            <code data-th-utext="${contentMaster}">{"test": 234}</code>
+            </pre>
         </div>
     </div>
 </widget>
-
-<script type="application/javascript" data-th-src="${portal.assetUrl({'_path=js/bundle.js'})}" data-th-widget-id="${widgetId}"></script>
