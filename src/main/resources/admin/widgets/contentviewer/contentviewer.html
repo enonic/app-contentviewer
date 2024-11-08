@@ -3,7 +3,7 @@
           data-th-href="${portal.assetUrl({'_path=css/contentviewer.css'})}"
           type="text/css" media="all"/>
 
-    <script data-th-src="${portal.assetUrl({'_path=js/bundle.js'})}" data-th-widget-id="${widgetId}"></script>
+    <script data-th-src="${portal.assetUrl({'_path=js/bundle.js'})}" data-th-data-widget-id="${'widget-' + widgetId}"></script>
 
     <div data-th-id="xpcontentviewerid" class="xp-contentviewer">
         <div data-th-id="tabs" class="xp-contentviewer-tabs">

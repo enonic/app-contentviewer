@@ -10,16 +10,25 @@ function handleGet(req) {
     if (!contentId && portalLib.getContent()) {
         contentId = portalLib.getContent()._id;
     }
+    const repository = req.params.repository;
+    let errorMessage;
+    if (!repository) {
+        errorMessage = "No repository provided";
+    }
 
     if (!contentId) {
+        errorMessage = "No content selected";
+    }
+
+    if (errorMessage) {
         return {
             contentType: 'text/html',
-            body: '<widget class="error">No content selected</widget>'
+            body: `<widget class="error">${errorMessage}</widget>`
         };
     }
 
-    const draftContent = fetchContentFromBranch(contentId, 'draft');
-    const masterContent = fetchContentFromBranch(contentId, 'master');
+    const draftContent = fetchContentFromBranch(contentId, repository, 'draft');
+    const masterContent = fetchContentFromBranch(contentId, repository, 'master');
 
     let activeBranch = 'draft';
 
@@ -42,9 +51,10 @@ function handleGet(req) {
 }
 exports.get = handleGet;
 
-function fetchContentFromBranch(contentId, branch) {
+function fetchContentFromBranch(contentId, repository, branch) {
     return contextLib.run({
-        branch: branch
+        branch,
+        repository
     }, function() {
         return contentLib.get({
             key: contentId

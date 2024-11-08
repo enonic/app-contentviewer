@@ -45,8 +45,8 @@ const initTab = (branch, widgetContainer) => {
         throw 'Legacy browsers are not supported';
     }
 
-    const widgetId = document.currentScript.getAttribute('widget-id');
-    const widgetContainer = document.getElementById(`widget-${widgetId}`);
+    const widgetId = document.currentScript.getAttribute('data-widget-id');
+    const widgetContainer = document.getElementById(widgetId);
 
     if (!widgetContainer) {
         throw 'Failed to render widget container';
