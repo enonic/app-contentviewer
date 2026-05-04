@@ -1,0 +1,5 @@
+kind: "Application"
+title: "Content Viewer App"
+description: "Inspect your content object JSON"
+vendorName: "Enonic AS"
+vendorUrl: "https://enonic.com"
