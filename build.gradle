@@ -1,28 +1,20 @@
 plugins {
     id 'maven-publish'
     id 'com.enonic.defaults' version '2.1.6'
-    id 'com.enonic.xp.app' version '3.6.2'
+    id 'com.enonic.xp.app'
     id "com.github.node-gradle.node" version '7.1.0'
 }
 
-app {
-    name = project.appName
-    displayName = 'Content Viewer App'
-    vendorName = 'Enonic AS'
-    vendorUrl = 'https://enonic.com'
-    systemVersion = "${xpVersion}"
-}
-
 dependencies {
-    include "com.enonic.xp:lib-context:${xpVersion}"
-    include "com.enonic.xp:lib-content:${xpVersion}"
-    include "com.enonic.xp:lib-portal:${xpVersion}"
-    include "com.enonic.lib:lib-thymeleaf:2.1.1"
+    include xplibs.context
+    include xplibs.content
+    include xplibs.portal
+    include "com.enonic.lib:lib-thymeleaf:3.0.0-SNAPSHOT"
 }
 
 repositories {
     mavenCentral()
-    xp.enonicRepo()
+    xp.enonicRepo( "dev" )
 }
 
 node {
