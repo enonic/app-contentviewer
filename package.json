@@ -6,7 +6,7 @@
   "devDependencies": {
     "@babel/core": "^7.28.6",
     "@babel/preset-env": "^7.29.2",
-    "@babel/register": "^7.28.6",
+    "@babel/register": "^7.29.3",
     "babel-loader": "^10.1.1",
     "webpack": "^5.106.2",
     "webpack-cli": "^7.0.2"
