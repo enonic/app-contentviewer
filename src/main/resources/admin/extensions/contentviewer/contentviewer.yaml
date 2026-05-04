@@ -1,0 +1,5 @@
+kind: "AdminExtension"
+title: "Content Viewer"
+description: "Inspect your content object JSON"
+interfaces:
+  - "contentstudio.contextpanel"
