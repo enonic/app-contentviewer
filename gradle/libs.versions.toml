@@ -1,0 +1,5 @@
+[versions]
+thymeleaf = "3.0.0-SNAPSHOT"
+
+[libraries]
+lib-thymeleaf = { module = "com.enonic.lib:lib-thymeleaf", version.ref = "thymeleaf" }
